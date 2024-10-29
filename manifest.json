@@ -1,0 +1,13 @@
+{
+  "manifest_version": 3,
+  "name": "Audio Player Extension",
+  "version": "1.0",
+  "description": "Chrome extension for playing audio files and URLs",
+  "permissions": [
+    "storage",
+    "unlimitedStorage"
+  ],
+  "action": {
+    "default_popup": "index.html"
+  }
+}

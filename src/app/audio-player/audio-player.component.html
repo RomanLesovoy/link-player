@@ -1,0 +1,42 @@
+<div class="player-container">
+  <!-- Drop zone -->
+  <div 
+    class="drop-zone"
+    (dragover)="$event.preventDefault()"
+    (drop)="onDrop($event)">
+    <p>Drag and drop audio files here</p>
+  </div>
+
+  <!-- URL input -->
+  <div class="url-input">
+    <input 
+      type="text" 
+      [(ngModel)]="audioUrl" 
+      placeholder="Enter audio URL">
+    <button class="add-button" (click)="addAudioUrl(audioUrl)">Add track</button>
+  </div>
+
+  <!-- Playlist -->
+  <div class="playlist">
+    <div 
+      *ngFor="let track of tracks"
+      [class.active]="currentTrack?.id === track.id"
+      (click)="playTrack(track)">
+      {{ track.name }}
+    </div>
+  </div>
+
+  <!-- Player controls -->
+  <div class="player-controls" *ngIf="currentTrack">
+    <button (click)="play()">Play</button>
+    <button (click)="pause()">Pause</button>
+    <button (click)="stop()">Stop</button>
+    <input 
+      type="range" 
+      [value]="getVolume()"
+      (input)="setVolume($event)"
+      min="0"
+      max="1"
+      step="0.1">
+  </div>
+</div>
